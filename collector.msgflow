@@ -7,13 +7,13 @@
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ACE_message_Grouping/icons/full/obj30/collector.gif"/>
     <composition>
       <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="17,46" queueName="QL.SOURCE" messageDomainProperty="XMLNSC">
-        <translation xmi:type="utility:ConstantString" string="MQ Input"/>
+        <translation xmi:type="utility:ConstantString" string="QL.SOURCE"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="327,49" computeExpression="esql://routine/#collector_Compute.Main" computeMode="destinationAndMessage">
-        <translation xmi:type="utility:ConstantString" string="Compute"/>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="327,49" computeExpression="esql://routine/#split_propagate.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="split_propagate"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="692,48" queueName="QL.TARGET.UNKNOWN">
-        <translation xmi:type="utility:ConstantString" string="MQ Output"/>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="692,48" queueName="QL.TARGET.SPLIT">
+        <translation xmi:type="utility:ConstantString" string="QL.TARGET.SPLIT_OUT"/>
       </nodes>
       <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="607,173">
         <translation xmi:type="utility:ConstantString" string="Trace"/>
@@ -23,14 +23,14 @@
         <translation xmi:type="utility:ConstantString" string="Collector"/>
         <eventHandlerPropertyTable terminal="MQout" quantity="2" timeout="3" correlationPath="$Root/MQRFH2/usr/queueName" correlationPattern=""/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="548,309" computeExpression="esql://routine/#collector_Compute1.Main" computeMode="destinationAndMessage">
-        <translation xmi:type="utility:ConstantString" string="Compute1"/>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="548,309" computeExpression="esql://routine/#collector_through.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="collector_through"/>
       </nodes>
       <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="809,309" destinationMode="list">
-        <translation xmi:type="utility:ConstantString" string="MQ Output1"/>
+        <translation xmi:type="utility:ConstantString" string="Destination List"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="41,290" queueName="QL.TARGET.UNKNOWN" messageDomainProperty="XMLNSC">
-        <translation xmi:type="utility:ConstantString" string="MQ Input1"/>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="21,303" queueName="QL.TARGET.SPLIT" messageDomainProperty="XMLNSC">
+        <translation xmi:type="utility:ConstantString" string="QL.TARGET.SPLIT_IN"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
