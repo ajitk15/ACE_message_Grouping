@@ -1,0 +1,41 @@
+<order>
+    <orderNumber>12345</orderNumber>
+    <customerName>John Doe</customerName>
+    <orderDate>2023-10-27</orderDate>
+    <items>
+        <item>
+            <itemName>Laptop</itemName>
+			<brand>Dell</brand>
+            <quantity>2</quantity>
+            <price>800.00</price>
+        </item>
+        <item>
+            <itemName>Mouse</itemName>
+            <quantity>3</quantity>
+            <price>20.00</price>
+        </item>
+		<item>
+            <itemName>Laptop</itemName>
+			<brand>HP</brand>
+            <quantity>1</quantity>
+            <price>400.00</price>
+        </item>
+        <item>
+            <itemName>Monitor</itemName>
+            <quantity>1</quantity>
+            <price>300.00</price>
+        </item>
+    </items>
+    <shippingAddress>
+        <streetAddress>123 Main St</streetAddress>
+        <city>Anytown</city>
+        <state>CA</state>
+        <postalCode>12345</postalCode>
+    </shippingAddress>
+    <billingAddress>
+        <streetAddress>456 Elm St</streetAddress>
+        <city>Other City</city>
+        <state>CA</state>
+        <postalCode>67890</postalCode>
+    </billingAddress>
+</order>

@@ -1,0 +1,38 @@
+
+
+CREATE COMPUTE MODULE collector_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE inRef REFERENCE TO InputRoot.XMLNSC.order.items;
+		DECLARE I INTEGER 1;
+		
+
+				
+		FOR atItem AS inRef.item[] DO
+			
+			SET Environment.infor = atItem;
+			IF FIELDVALUE(inRef.item[I].itemName) IN ('Laptop', 'Mouse', 'Monitor') THEN
+				
+				
+				-- SET OutputRoot.MQMD = InputRoot.MQMD ;
+				SET OutputRoot.Properties.MessageFormat = 'XLMNSC';
+				SET OutputRoot.MQRFH2.(MQRFH2.Field)Version = 2;
+				SET OutputRoot.MQRFH2.(MQRFH2.Field)Format = 'MQSTR';
+				SET OutputRoot.MQRFH2.usr.queueName = 'QL.TARGET.'||UPPER(CAST(inRef.item[I].itemName AS CHAR));
+				
+				CREATE FIELD OutputRoot.XMLNSC.order ;
+				DECLARE outRef REFERENCE TO OutputRoot.XMLNSC.order;
+				
+				-- CREATE FIRSTCHILD OF OutputRoot.XMLNSC.order Domain('XMLNS') NAME 'order';
+				
+				SET outRef = atItem;
+				
+				PROPAGATE DELETE NONE;
+				
+				SET I = I + 1;
+			END IF;
+		END FOR;
+
+		RETURN FALSE;
+	END;
+END MODULE;
